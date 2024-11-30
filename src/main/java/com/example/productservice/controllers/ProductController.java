@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceNotFoundException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/Products")
@@ -45,6 +46,18 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable("id") Long id, @RequestBody Product product){
         return  productService.updateProduct(id, product);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Product> patchProduct(@PathVariable("id") Long id, @RequestBody Product product) throws ProductNotFoundException {
+        Product product1 =  productService.patchProduct(id, product);
+        return new ResponseEntity<>(product1, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id){
+        Product product = productService.delete(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
 //    @ExceptionHandler(ProductNotFoundException.class)
