@@ -18,4 +18,6 @@ public interface ProductService {
     Product patchProduct(Long id, Product product) throws ProductNotFoundException;
 
     Product delete(Long id);
+
+    Product create(Product product);
 }

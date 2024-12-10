@@ -106,6 +106,11 @@ public class FakeStoreProductService implements  ProductService{
         return convertFakeStoreProductDtoToProduct(response.getBody());
     }
 
+    @Override
+    public Product create(Product product) {
+        return null;
+    }
+
     private Product convertFakeStoreProductDtoToProduct(FakeStoreProductDto fakeStoreProductDto) {
         if(fakeStoreProductDto == null) {
             return null;

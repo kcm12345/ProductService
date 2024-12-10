@@ -1,9 +1,9 @@
 package com.example.productservice.controllers;
 
-import com.example.productservice.dtos.ProductNotFoundExceptionDto;
 import com.example.productservice.exceptions.ProductNotFoundException;
 import com.example.productservice.models.Product;
 import com.example.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/Products")
 public class ProductController {
     ProductService productService;
-    public ProductController(ProductService productService) {
+    public ProductController(@Qualifier("RealProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -58,6 +58,12 @@ public class ProductController {
     public  ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id){
         Product product = productService.delete(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<Product> createProduct(@RequestBody Product product){
+        var response = productService.create(product);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 //    @ExceptionHandler(ProductNotFoundException.class)
