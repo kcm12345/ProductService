@@ -52,14 +52,15 @@ public class RealProductService implements ProductService{
 
     @Override
     public  Product create(Product product){
-        Category category = product.getCategory();
+        // Now cascading will create the dependant entry in table (parent table).
+/*        Category category = product.getCategory();
         if(category.getId() == null){
             Category savedCategory = categoryRepo.save(category);
             product.setCategory(savedCategory);
         }
         else {
             // category validation logic
-        }
+        }*/
         return _productRepo.save(product);
     }
 }

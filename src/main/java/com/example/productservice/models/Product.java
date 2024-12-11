@@ -1,5 +1,6 @@
 package com.example.productservice.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,7 +13,9 @@ import lombok.Setter;
 public class Product extends BaseModel {
     String description;
     Double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     Category category;
+    int qty;
+    double rating;
 }
