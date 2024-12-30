@@ -32,7 +32,7 @@ public class RealProductService implements ProductService{
 
     @Override
     public List<Product> getAllProducts() {
-        return List.of();
+        return _productRepo.findAll();
     }
 
     @Override
