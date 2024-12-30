@@ -13,9 +13,8 @@ import lombok.Setter;
 public class Product extends BaseModel {
     String description;
     Double price;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn
     Category category;
-    int qty;
     double rating;
 }

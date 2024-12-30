@@ -12,6 +12,5 @@ import java.util.List;
 @Setter
 @Entity
 public class Category extends BaseModel {
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
-    private List<Product> products;
+
 }
