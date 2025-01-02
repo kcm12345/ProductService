@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/Products")
 public class ProductController {
     ProductService productService;
-    public ProductController(@Qualifier("RealProductService") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
