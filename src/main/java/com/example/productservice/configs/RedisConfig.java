@@ -1,3 +1,4 @@
+/*
 package com.example.productservice.configs;
 
 import org.springframework.context.annotation.Bean;
@@ -14,3 +15,4 @@ public class RedisConfig {
         return template;
     }
 }
+*/
